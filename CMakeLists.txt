@@ -5,4 +5,4 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(DataStructure main.c)
 
-add_executable(infixToPrefix 3.Stack/infixToPrefix.c)
+add_executable(infixToPrefix 3.Stack/ExpressionConvert/infixToPrefix.c)
