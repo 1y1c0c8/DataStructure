@@ -5,57 +5,16 @@
 //     https://opensourcedoc.com/c-programming/struct/
 
 #include <stdio.h>
+#include "../stackByHoff.h"
 #define MAX_LENGTH 20
 #define T target
 #define ST stackTop
 #define PAT preAnsTop
 
-typedef struct element{
-    char value ;
-    float weight ;
-}element;
-
-int elementsNum = 0;
-
-float weight(char element){
-    if(element == '(') return 0.5 ;
-    else if(element == ')') return -0.5 ;
-    else if(element == '+' || element == '-') return 1 ;
-    else if(element == '*' || element == '/') return 2 ;
-    else if(element == '\n') return 4 ;
-    else return 3 ;
-}
-
-int stackFull(int top){
-    if(top == elementsNum-1)
-        return 1 ;
-    else return 0 ;
-}
-
-int stackEmpty(int top){
-    if(top == -1)
-        return 1 ;
-    else return 0 ;
-}
-
-void push(element* stack, int* top, char element){
-    if(!stackFull(top)){
-        //該加括號就加括號
-        (*top)++ ;
-        (stack+*top)->value = element ;
-        (stack+*top)->weight = weight(element) ;
-    }
-}
-
-void pop(element* stack, int* top){
-    if(!stackEmpty(top)){
-        (stack+*top)->value = ' ' ;
-        (stack+*top)->weight = -1 ;
-        (*top)-- ;
-    }
-}
-
 int main(){
+    printf("Enter the expression:") ;
+
+    //宣告儲存輸入字串的結構
     element elements[MAX_LENGTH] ;
     for(int i=0; i<MAX_LENGTH; i++){
         elements[i].value = ' ' ;
@@ -63,9 +22,7 @@ int main(){
     }
     int target=0 ;
 
-
-    printf("Enter the expression:") ;
-
+    //讀取輸入字元並且加權置入結構
     int index = 0 ;
     do{
         char tempChar = ' ' ;
@@ -80,20 +37,20 @@ int main(){
     //從右讀至左(逆)
     target = index-2 ;
     //計算有幾個字元(含括號)
-    elementsNum = target+1 ; //7
+    elementsNum = target+1 ;
 
     //stack
     element stack[elementsNum] ;
     int stackTop = -1 ;
 
-    //preAns
+    //宣告preAns，儲存尚未反轉之前的已處理字串
     char preAns[MAX_LENGTH] ;
     for(int i=0; i<MAX_LENGTH; i++){
         preAns[i] = ' ' ;
     }
     int preAnsTop=0 ;
 
-
+    //開始由右至左逆向判讀輸入字串
     for(int i=target; i>=0; i--){
         if(elements[i].weight == 3){
             preAns[PAT] = elements[i].value ;
