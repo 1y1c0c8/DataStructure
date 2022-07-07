@@ -37,7 +37,8 @@ int main(){
     //從右讀至左(逆)
     target = index-2 ;
     //計算有幾個字元(含括號)
-    elementsNum = target+1 ;
+    //elementsNum = target+1 ;
+    elementsNum = index-1 ;
 
     //stack
     element stack[elementsNum] ;
@@ -95,10 +96,10 @@ int main(){
         }while(!stackEmpty(ST)) ;
     }
 
+    printf("Prefix format: ") ;
     for(int i=PAT-1; i>=0; i--){
         printf("%c", preAns[i]) ;
     }
 
     return 0 ;
 }
-

@@ -38,15 +38,15 @@ void push(element* stack, int* top, char element){
     if(!stackFull(top)){
         //該加括號就加括號
         (*top)++ ;
-        (stack+*top)->value = element ;
-        (stack+*top)->weight = weight(element) ;
+        (stack+ *top) ->value = element ;
+        (stack+ *top) ->weight = weight(element) ;
     }
 }
 
 void pop(element* stack, int* top){
     if(!stackEmpty(top)){
-        (stack+*top)->value = ' ' ;
-        (stack+*top)->weight = -1 ;
+        (stack+ *top) ->value = ' ' ;
+        (stack+ *top) ->weight = -1 ;
         (*top)-- ;
     }
 }
