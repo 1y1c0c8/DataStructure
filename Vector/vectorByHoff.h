@@ -51,11 +51,11 @@ char vecBack(vector V){
 
 vector* vecDouble(vector* V) ;
 
-vector* vecPushBack(vector* V, char E){
-    if(vecFull(*V)){
+vector* vecPushBack(vector* V, char C){
+    if(vecFull(*V))
         V = vecDouble(V) ;
-    }
-    V->arr[V->end] = E ;
+
+    V->arr[V->end] = C ;
     (V->end) ++ ;
 
     return V ;
