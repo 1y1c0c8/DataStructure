@@ -33,35 +33,27 @@ int vecEmpty(vector V){
     return V.end-1 == 0 ;
 }
 
-//V
-//因為end的關係所以只能這樣寫 小心
 int vecFull(vector V){
     return V.end == V.capacity ;
 }
 
-//V
 char vecAt(vector V, int index){
     return V.arr[index] ;
 }
 
-//V
 char vecFront(vector V){
     return V.arr[0] ;
 }
 
-//V
 char vecBack(vector V){
     return V.arr[V.end-1] ;
 }
 
-//vector* vecDouble(vector V) ;
 vector* vecDouble(vector* V) ;
 
 vector* vecPushBack(vector* V, char E){
     if(vecFull(*V)){
         V = vecDouble(V) ;
-//        V->arr[V->end] = E ;
-//        (V->end) ++ ;
     }
     V->arr[V->end] = E ;
     (V->end) ++ ;
@@ -88,12 +80,10 @@ vector* vecInsert(vector *V, int insertIndex, char E){
 
     V->arr[insertIndex] = E, V->end ++ ;
 
-
     for(int i=insertIndex+1, j=0; j<shiftNum; i++, j++){
         V->arr[i] = tempChar[j], V->end ++ ;
     }
     return V ;
-
 }
 
 //beforeShift: insertIndex~(end-1)    end = 6
@@ -128,7 +118,6 @@ vector* vecErase(vector *V, int beginIndex, int endIndex){
             vecPushBack(V, tempChar[i]) ;
         }
     }
-
     return V ;
 }
 
@@ -196,7 +185,6 @@ vector* vecDouble(vector* V){
 //    int temp = V->capacity;
 //    printf("%d",temp);
 //}
-
 
 char* vecBegin(vector *V){
     return V->arr ;
