@@ -2,16 +2,19 @@
 // Created by kenny on 2022/7/7.
 //
 
-#ifndef DATASTRUCTURE_PUSH_H
-#define DATASTRUCTURE_PUSH_H
+#ifndef stackByHoff
+#define stackByHoff
 
 typedef struct element{
     char value ;
     float weight ;
 }element;
 
-//Remember to update the value of elementsNum
-int elementsNum ;
+typedef struct{
+    int top ;
+    element* arr ;
+}stack;
+
 
 float weight(char element){
     if(element == '(') return 0.5 ;
@@ -22,7 +25,7 @@ float weight(char element){
     else return 3 ;
 }
 
-int stackFull(int top){
+int stackFull(int top, int elementsNum){
     if(top == elementsNum-1)
         return 1 ;
     else return 0 ;
@@ -34,8 +37,8 @@ int stackEmpty(int top){
     else return 0 ;
 }
 
-void push(element* stack, int* top, char element){
-    if(!stackFull(top)){
+void push(element* stack, int* top, char element, int elementsNum){
+    if(!stackFull(top, elementsNum)){
         //該加括號就加括號
         (*top)++ ;
         (stack+ *top) ->value = element ;
@@ -51,4 +54,13 @@ void pop(element* stack, int* top){
     }
 }
 
-#endif //DATASTRUCTURE_PUSH_H
+element* stackTop(element* stack, int* top){
+    element* tempTop = NULL ;
+    tempTop = (stack+ *top) ;
+    (stack+ *top) ->value = ' ' ;
+    (stack+ *top) ->weight = -1 ;
+    (*top)-- ;
+    return tempTop ;
+}
+
+#endif //stackByHoff

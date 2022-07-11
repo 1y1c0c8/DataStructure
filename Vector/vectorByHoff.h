@@ -1,6 +1,6 @@
 //
 // Created by kenny on 2022/7/11.
-//
+// reference: https://mropengate.blogspot.com/2015/07/cc-vector-stl.html
 
 #ifndef DATASTRUCTURE_VECTORBYHOFF_H
 #define DATASTRUCTURE_VECTORBYHOFF_H
