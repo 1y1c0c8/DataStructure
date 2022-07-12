@@ -191,7 +191,20 @@ char* vecBegin(vector *V){
 }
 
 char* vecEnd(vector *V){
-    return (V->arr + (V->end-1)) ;
+    return (V->arr + (V->end)) ;
+}
+
+vector* vecCopy(vector *V){
+    vector *dualV = vecCreate() ;
+
+    char *beginP = vecBegin(V) ;
+    char *constEnd = vecEnd(V) ;
+
+    for(;beginP!=constEnd ; beginP++){
+        dualV = vecPushBack(dualV, *beginP) ;
+    }
+
+    return dualV ;
 }
 
 void vecFree(vector *V){

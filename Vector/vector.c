@@ -31,6 +31,10 @@ int main(){
     testVec = vecPushBack(testVec, 'E') ;
     testVec = vecPushBack(testVec, 'F') ;
 
+    vector *S = vecCreate() ;
+    S = vecCopy(testVec) ;
+
+
     testVec = vecErase(testVec, 1, 4) ;
 
 
