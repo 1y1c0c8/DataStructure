@@ -24,29 +24,32 @@ void nodeConnect(struct node *pre, struct node *new){
     new->preNode = pre ;
 }
 
-struct node* nodeDelete(struct node *start, int target){
+struct node* nodeDelete(struct node *head, int target){
     int choice=0 ;
-    struct node *newStart = start->nextNode ;
+    struct node *duplicateHead = head->nextNode ;
 
-    if(start->value == target){
-        newStart->preNode = NULL ;
-        free(start) ;
-        choice = 1 ;
+    if(head->value == target){
+        duplicateHead->preNode = NULL ;
+        head->nextNode = NULL ;
+        free(head) ;
+        return duplicateHead ;
     }else{
-        struct node *n = start ;
-
-        while(n->value != target){
-            //printf("%d\n", n->value) ;
-            n = n->nextNode ;
-        }
-        struct node *beforeT = n->preNode ;
-        struct node *afterT = n->nextNode ;
-        nodeConnect(beforeT, afterT) ;
-
-        choice = 2 ;
+//        struct node *n = start ;
+//
+//        printf("Start traversal till the value of curNode is target:\n") ;
+//        int k=1 ;
+//        while(n->value != target){
+//            printf("The no.%d cycle, the value of curNode is %d.\n", k, n->value) ;
+//            n = n->nextNode ;
+//            k++ ;
+//        }
+//        struct node *beforeT = n->preNode ;
+//        struct node *afterT = n->nextNode ;
+//        nodeConnect(beforeT, afterT) ;
+//
+//        choice = 2 ;
+        printf("TEST POINT!") ;
     }
-    if(choice == 1) return newStart ;
-    else return start;
 }
 
 void freeNode(struct node *start){
