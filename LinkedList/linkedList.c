@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedListByHoff.h"
+#include "singleLinkedListByHoff.h"
 
 int main(){
-    struct node *n1p = nodeCreate(0) ;
-    struct node *n2p = nodeCreate(1) ;
-    struct node *n3p = nodeCreate(2) ;
+    struct node *n1p = singleNodeCreate(0) ;
+    struct node *n2p = singleNodeCreate(1) ;
+    struct node *n3p = singleNodeCreate(2) ;
 
-    nodeConnect(n3p, n1p) ;
-    nodeConnect(n1p, n2p) ;
+    singleNodeConnect(n3p, n1p) ;
+    singleNodeConnect(n1p, n2p) ;
 
     printf("STOP!") ;
 
