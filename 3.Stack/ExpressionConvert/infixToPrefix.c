@@ -5,7 +5,7 @@
 //     https://opensourcedoc.com/c-programming/struct/
 
 #include <stdio.h>
-#include "../stackByHoff.h"
+#include "../../Stack/stackByHoff.h"
 #define MAX_LENGTH 20
 #define T target
 #define ST stackTop
@@ -32,13 +32,15 @@ int main(){
         elements[index].weight = weight(tempChar) ;
 
         index ++ ;
-    }while(elements[index-1].value != '\n') ;
+    }while(elements[index-1].weight != 4) ;
 
     //從右讀至左(逆)
     target = index-2 ;
     //計算有幾個字元(含括號)
     //elementsNum = target+1 ;
-    elementsNum = index-1 ;
+
+    //改
+    int elementsNum = index-1 ;
 
     //stack
     element stack[elementsNum] ;
@@ -62,7 +64,9 @@ int main(){
 
                 //太多top了 直接混在一起==
 
-                push(&stack[0], &ST, elements[i].value) ;
+
+                //改
+                push(&stack[0], &ST, elements[i].value, elementsNum) ;
             else if(elements[i].weight == 0.5){
                 do{
                     preAns[PAT] = stack[ST].value ;
@@ -78,11 +82,11 @@ int main(){
                 ST-- ;
             }
             else if(elements[i].weight > stack[ST].weight)
-                push(&stack[0], &ST, elements[i].value) ;
+                push(&stack[0], &ST, elements[i].value, elementsNum) ;
             else if(elements[i].weight <= stack[ST].weight){
                 preAns[PAT] = stack[ST].value ;
                 pop(&stack[0], &ST) ;
-                push(&stack[0], &ST, elements[i].value) ;
+                push(&stack[0], &ST, elements[i].value, elementsNum) ;
             }
         }
     }

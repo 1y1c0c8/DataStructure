@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-#include "../stackByHoff.h"
+#include "../../Stack/stackByHoff.h"
 #define MAX_LENGTH 20
 
 int main(){
@@ -27,7 +27,7 @@ int main(){
         elements[index].weight = weight(tempChar) ;
 
         index ++ ;
-    }while(elements[index-1].value != '\n') ;
+    }while(elements[index-1].weight != 4) ;
 
     //計算字元個數
     elementsNum = index-1 ; ;

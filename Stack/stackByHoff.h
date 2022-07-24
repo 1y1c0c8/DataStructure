@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #define initCap 4 //initCap: initial length
 #define space ' '
 

@@ -31,18 +31,22 @@ int main(){
     testVec = vecPushBack(testVec, 'E') ;
     testVec = vecPushBack(testVec, 'F') ;
 
-    vector *S = vecCreate() ;
-    S = vecCopy(testVec) ;
 
+    int test = vecIndex(testVec, &testVec->arr[3]) ;
+    printf("test:%d\n", test) ;
 
-    testVec = vecErase(testVec, 1, 4) ;
+    vector *temp1 = vecCreate() ;
+    temp1 = vecPushBack(temp1, 'A') ;
+    temp1 = vecPushBack(temp1, 'a') ;
 
+    vector *temp2 = vecCreate() ;
+    temp2 = vecPushBack(temp2, 'B') ;
+    temp2 = vecPushBack(temp2, 'C') ;
+    temp2 = vecPushBack(temp2, 'D') ;
 
-    char *printP = vecBegin(testVec) ;
-    for(; printP!=&(testVec->arr[testVec->end]); printP++){
-        printf("%c\n", *printP) ;
-    }
+    temp1 = vecPushVec(temp1, temp2) ;
 
+    vecPrint(temp1) ;
 
     vecFree(testVec) ;
 

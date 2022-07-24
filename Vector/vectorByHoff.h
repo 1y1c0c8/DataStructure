@@ -49,6 +49,15 @@ char vecBack(vector V){
     return V.arr[V.end-1] ;
 }
 
+int vecIndex(vector *V, char *c){
+    int returnValue = 0 ;
+
+    for(char *p= V->arr; p!=c; p++)
+        returnValue++ ;
+
+    return returnValue ;
+}
+
 vector* vecDouble(vector* V) ;
 
 vector* vecPushBack(vector* V, char C){
@@ -56,9 +65,28 @@ vector* vecPushBack(vector* V, char C){
         V = vecDouble(V) ;
 
     V->arr[V->end] = C ;
+
     (V->end) ++ ;
 
     return V ;
+}
+
+int vecSize(vector *V) ;
+
+vector* vecPushVec(vector *V, vector *v){
+    vector *newVec = vecCreate() ;
+    int targetNum = vecSize(V) ;
+    int pushNum = vecSize(v) ;
+    int totalNum = targetNum + pushNum ;
+
+    for(int pushIndex = 0; pushIndex< totalNum; pushIndex++){
+        if(pushIndex < vecSize(V))
+            newVec = vecPushBack(newVec, V->arr[pushIndex]) ;
+        else
+            newVec = vecPushBack(newVec, v->arr[pushIndex-targetNum]) ;
+    }
+
+    return newVec ;
 }
 
 void vecPop(vector *V){
@@ -161,7 +189,8 @@ vector* vecDouble(vector* V){
         if(i<V->capacity)
             doubleVec->arr[i] = V->arr[i] ;
         else
-            doubleVec->arr[i] = ' ' ;
+            //doubleVec->arr[i] = ' ' ;
+            doubleVec = vecPushBack(doubleVec, ' ') ;
     }
 
     return doubleVec ;
@@ -205,6 +234,12 @@ vector* vecCopy(vector *V){
     }
 
     return dualV ;
+}
+
+void vecPrint(vector *V){
+    for(int i=0; i<vecSize(V); i++){
+        printf("%c\n", V->arr[i]) ;
+    }
 }
 
 void vecFree(vector *V){
