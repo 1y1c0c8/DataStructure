@@ -12,5 +12,16 @@ int main(){
         bstCreate(p, values[i]) ;
     }
 
+    printf("inorder:\n") ;
+    inorderTraversal(p) ;
+    printf("\n") ;
+
+    printf("preorder:\n") ;
+    preorderTraversal(p) ;
+    printf("\n") ;
+
+    printf("postorder:\n") ;
+    postorderTraversal(p) ;
+    
     return 0 ;
 }

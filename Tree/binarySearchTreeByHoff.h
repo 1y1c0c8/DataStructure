@@ -15,13 +15,13 @@ struct tNode{
     struct tNode *rChild ;
 };
 
-struct tNode* rootCreate(int value){
-    struct tNode *newTNode = malloc(sizeof(struct tNode)) ;
-    newTNode->fNode = NULL ;
-    newTNode->value = value ;
-    newTNode->lChild = NULL ;
-    newTNode->rChild = NULL ;
-    return newTNode ;
+//put pointer of rChild of root
+struct tNode *findRMin(struct tNode *root){
+    struct tNode *min = malloc(sizeof(struct tNode)) ;
+
+    while(root->lChild!=NULL){
+        min = root->lChild ;
+    }
 }
 
 struct tNode* dig(struct tNode *root, int value){
@@ -84,6 +84,43 @@ void bstCreate(struct tNode **root, int value){
         }
     }
 }
+
+// .lChild -> .fNode -> .rChild
+void inorderTraversal(struct tNode **root){
+    if((*root)->lChild!=NULL)
+        inorderTraversal(&(*root)->lChild) ;
+    printf("[%2d] ", (*root)->value) ;
+    if((*root)->rChild!=NULL)
+        inorderTraversal(&(*root)->rChild) ;
+}
+
+void preorderTraversal(struct tNode **root){
+    printf("[%2d] ", (*root)->value) ;
+    if((*root)->lChild!=NULL)
+        preorderTraversal(&(*root)->lChild) ;
+    if((*root)->rChild!=NULL)
+        preorderTraversal(&(*root)->rChild) ;
+}
+
+void postorderTraversal(struct tNode **root){
+    if((*root)->lChild!=NULL)
+        postorderTraversal(&(*root)->lChild) ;
+    if((*root)->rChild!=NULL)
+        postorderTraversal(&(*root)->rChild) ;
+    printf("[%2d] ", (*root)->value) ;
+}
+
+struct tNode* bfs(struct tNode *root, int target){
+
+}
+
+struct tNode* dfs(struct tNode *root, int target){
+
+}
+
+
+//void treeDelete(struct tNode **root, int target){
+//}
 
 
 #endif //DATASTRUCTURE_BINARYTREEBYHOFF_H
